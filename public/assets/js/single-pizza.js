@@ -18,7 +18,7 @@ function getPizza() {
   fetch(`/api/pizzas/${pizzaId}`)
     .then(response => {
       console.log(response);
-      if (!response) {
+      if (!response.ok) {
         throw new Error({ message: 'Something went wrong!' });
       }
       
