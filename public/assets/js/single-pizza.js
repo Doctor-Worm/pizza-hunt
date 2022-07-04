@@ -15,7 +15,7 @@ function getPizza() {
   const pizzaId = searchParams.get('id');
 
   // get pizzaInfo
-  fetch(`/api/pizzas/${pizzaId}`)
+  fetch(`./api/pizzas/${pizzaId}`)
     .then(response => {
       console.log(response);
       if (!response.ok) {
@@ -112,7 +112,7 @@ function handleNewCommentSubmit(event) {
 
   const formData = { commentBody, writtenBy };
 
-  fetch(`api/comments/${pizzaId}`, {
+  fetch(`./api/comments/${pizzaId}`, {
     method: 'POST',
     headers: {
       Accept: 'application/json',
@@ -153,7 +153,7 @@ function handleNewReplySubmit(event) {
 
   const formData = { writtenBy, replyBody };
 
-  fetch(`/api/comments/${pizzaId}/${commentId}`, {
+  fetch(`./api/comments/${pizzaId}/${commentId}`, {
     method: 'PUT',
     headers: {
       Accept: 'application/json',
