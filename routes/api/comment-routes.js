@@ -6,12 +6,9 @@ const { addComment, removeComment, addReply, removeReply } = require('../../cont
 router.route('/:pizzaId').post(addComment);
 
 // route  /api/comments/<pizzaId>/<commentId>
-router.route('/:pizzaId/:commentId').delete(removeComment);
-
-// put route to edit our existing comment route
 router.route('/:pizzaId/:commentId')
-    .put(addReply)
-    .delete(addComment);
+.put(addReply)
+.delete(removeComment);
 
 // delete route
 router.route('/:pizzaId/:commentId/:replyId').delete(removeReply);

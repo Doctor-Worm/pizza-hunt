@@ -1,5 +1,3 @@
-const { response } = require("express");
-
 const $backBtn = document.querySelector('#back-btn');
 const $pizzaName = document.querySelector('#pizza-name');
 const $createdBy = document.querySelector('#created-by');
@@ -19,10 +17,11 @@ function getPizza() {
   // get pizzaInfo
   fetch(`/api/pizzas/${pizzaId}`)
     .then(response => {
+      console.log(response);
       if (!response) {
         throw new Error({ message: 'Something went wrong!' });
       }
-      console.log(response);
+      
       return response.json();
     })
     .then(printPizza)
@@ -54,7 +53,7 @@ function printPizza(pizzaData) {
   } else {
     $commentSection.innerHTML = '<h4 class="bg-dark p-3 rounded">No comments yet!</h4>';
   }
-}
+};
 
 function printComment(comment) {
   // make div to hold comment and subcomments
@@ -90,7 +89,7 @@ function printComment(comment) {
 
   commentDiv.innerHTML = commentContent;
   $commentSection.prepend(commentDiv);
-}
+};
 
 function printReply(reply) {
   return `
@@ -99,7 +98,7 @@ function printReply(reply) {
     <p>${reply.replyBody}</p>
   </div>
 `;
-}
+};
 
 function handleNewCommentSubmit(event) {
   event.preventDefault();
@@ -175,7 +174,7 @@ function handleNewReplySubmit(event) {
     .catch(err => {
       console.log(err);
     });
-}
+};
 
 $backBtn.addEventListener('click', function() {
   window.history.back();
